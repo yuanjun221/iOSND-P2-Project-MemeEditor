@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIImagePickerExperiment" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kvP-Pc-EMB">
+                                <rect key="frame" x="0.0" y="28" width="600" height="528"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4X-WD-BTu">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="V4p-Kv-7j8"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Aq1-Dh-nMq"/>
+                                    <barButtonItem systemItem="camera" id="hxE-n8-02n">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="7PU-hC-6YC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="organize" id="0x6-Wr-B47">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="WVD-ly-dBl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Iug-YT-Iq6"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kvP-Pc-EMB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9ie-xE-SlE"/>
+                            <constraint firstItem="kvP-Pc-EMB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="BUs-Zf-1JC"/>
+                            <constraint firstItem="Y4X-WD-BTu" firstAttribute="top" secondItem="kvP-Pc-EMB" secondAttribute="bottom" id="Fr8-9Q-rTb"/>
+                            <constraint firstItem="Y4X-WD-BTu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="HPv-YD-TlQ"/>
+                            <constraint firstItem="Y4X-WD-BTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="RaQ-VK-GYI"/>
+                            <constraint firstItem="kvP-Pc-EMB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="cXA-FU-hZ5"/>
+                            <constraint firstItem="Y4X-WD-BTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p7x-3H-Eah"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="hxE-n8-02n" id="eLF-eu-t8A"/>
+                        <outlet property="imagePickerView" destination="kvP-Pc-EMB" id="nxp-xB-pfQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="555" y="454"/>
         </scene>
     </scenes>
 </document>
