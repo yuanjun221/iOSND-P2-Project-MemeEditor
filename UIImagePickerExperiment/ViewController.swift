@@ -69,11 +69,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             shareButton.enabled = false
         }
         
-        if isEditorDefault() {
-            resetButton.enabled = false
-        } else {
-            resetButton.enabled = true
-        }
+        autoEnableResetButton()
         subscribeToKeyboardNotifications()
     }
     
@@ -82,6 +78,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             return true
         }
         return false
+    }
+    
+    func autoEnableResetButton() {
+        if isEditorDefault() {
+            resetButton.enabled = false
+        } else {
+            resetButton.enabled = true
+        }
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -159,12 +163,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismissKeyboardForTextField(bottomTextField)
     }
     
-    func dismissKeyboardForTextField(textField: UITextField) {
-        if textField.isFirstResponder() {
-            textField.resignFirstResponder()
-        }
-    }
-    
     func hideOrShowBar(bar: UIView) {
         if bar.alpha == 0.0 {
             setBar(bar, withAlpha: 1.0)
@@ -175,6 +173,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func setBar(bar:UIView, withAlpha alpha:CGFloat) {
         UIView.animateWithDuration(0.3, animations: {bar.alpha = alpha})
+    }
+    
+    func dismissKeyboardForTextField(textField: UITextField) {
+        if textField.isFirstResponder() {
+            textField.resignFirstResponder()
+        }
     }
     
     
@@ -217,11 +221,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setBar(navigationBar, withAlpha: 1.0)
         setBar(bottomToolbar, withAlpha: 1.0)
         
-        if isEditorDefault() {
-            resetButton.enabled = false
-        } else {
-            resetButton.enabled = true
-        }
+        autoEnableResetButton()
         
         let text = textField.text
         if text == "" {
