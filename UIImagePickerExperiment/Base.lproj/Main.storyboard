@@ -9,7 +9,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIImagePickerExperiment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -41,13 +41,13 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="hFv-pC-4bm">
-                                <rect key="frame" x="40" y="80" width="520" height="48"/>
+                                <rect key="frame" x="40" y="60" width="520" height="48"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="AgX-bc-cq4">
-                                <rect key="frame" x="40" y="472" width="520" height="48"/>
+                                <rect key="frame" x="40" y="492" width="520" height="48"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
@@ -62,6 +62,7 @@
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ONU-gj-Pkt">
+                                            <color key="tintColor" red="0.92594361309999995" green="0.34263195029999999" blue="0.3924079506" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="resetEditor:" destination="BYZ-38-t0r" id="063-tT-4Ba"/>
                                             </connections>
@@ -83,12 +84,12 @@
                             <constraint firstItem="dJx-wM-E3h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fS5-ul-jI1"/>
                             <constraint firstItem="kvP-Pc-EMB" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="hqE-Z9-jNg"/>
                             <constraint firstItem="dJx-wM-E3h" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="iHf-JD-WJF"/>
-                            <constraint firstItem="AgX-bc-cq4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-80" id="kyf-4l-4GD"/>
+                            <constraint firstItem="AgX-bc-cq4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-60" id="kyf-4l-4GD"/>
                             <constraint firstItem="Y4X-WD-BTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mSt-rY-gE8"/>
                             <constraint firstItem="kvP-Pc-EMB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oex-d2-K2g"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hFv-pC-4bm" secondAttribute="trailing" constant="20" id="rur-Sv-1KB"/>
                             <constraint firstItem="kvP-Pc-EMB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="tDj-R9-xjF"/>
-                            <constraint firstItem="hFv-pC-4bm" firstAttribute="bottom" secondItem="kvP-Pc-EMB" secondAttribute="top" constant="128" id="tfr-3X-ZRp"/>
+                            <constraint firstItem="hFv-pC-4bm" firstAttribute="bottom" secondItem="kvP-Pc-EMB" secondAttribute="top" constant="108" id="tfr-3X-ZRp"/>
                             <constraint firstItem="hFv-pC-4bm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zCt-PF-byu"/>
                         </constraints>
                     </view>
