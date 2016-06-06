@@ -25,7 +25,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textfield.textAlignment = aligment
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +39,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setTextField(bottomTextField, withDelegate: self, textAttribute: memeTextAttributes, aligment: .Center)
     }
     
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
@@ -50,6 +48,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     /*
@@ -64,7 +66,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentImagePickerControllerWithSourceType(.PhotoLibrary)
     }
     
-    
     @IBAction func pickAnImageFromCamera(sender: AnyObject) {
         presentImagePickerControllerWithSourceType(.Camera)
     }
@@ -78,14 +79,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         presentViewController(pickerController, animated: true, completion: nil)
     }
     
-    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -116,8 +115,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
             view.frame.origin.y -= getKeyboardHeight(notification)
-            print("show view-y: \(view.frame.origin.y)")
-            print("show view-frame: \(view.frame.size)")
         }
         if topTextField.isFirstResponder() {
             view.frame.origin.y = 0
@@ -126,8 +123,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
-        print("hide view-y: \(view.frame.origin.y)")
-        print("hide view-frame: \(view.frame.size)")
     }
     
     func subscribeToKeyboardNotifications() {
@@ -139,6 +134,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
-    
 }
 

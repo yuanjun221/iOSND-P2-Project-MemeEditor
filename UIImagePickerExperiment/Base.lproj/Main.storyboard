@@ -19,15 +19,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kvP-Pc-EMB">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4w4-v3-nQM" userLabel="TopToolbar">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="YVq-BC-4e2"/>
-                                </items>
-                            </toolbar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y4X-WD-BTu" userLabel="BottomToolbar">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -47,7 +41,7 @@
                                 </items>
                             </toolbar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="40" translatesAutoresizingMaskIntoConstraints="NO" id="hFv-pC-4bm">
-                                <rect key="frame" x="40" y="100" width="520" height="48"/>
+                                <rect key="frame" x="40" y="80" width="520" height="48"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
@@ -58,29 +52,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
                             </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGX-XV-7jh" userLabel="TopToolbar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="svz-LX-CV1"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kvP-Pc-EMB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="083-il-RGI"/>
                             <constraint firstItem="hFv-pC-4bm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="1gj-nB-o8T"/>
-                            <constraint firstItem="4w4-v3-nQM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="4H0-0h-vrG"/>
                             <constraint firstItem="Y4X-WD-BTu" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="5mv-Xm-GX9"/>
                             <constraint firstItem="Y4X-WD-BTu" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="REy-Qa-RQ0"/>
                             <constraint firstItem="AgX-bc-cq4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VNM-5Z-1ZQ"/>
+                            <constraint firstItem="mGX-XV-7jh" firstAttribute="top" secondItem="kvP-Pc-EMB" secondAttribute="top" id="WHa-lP-Ckp"/>
                             <constraint firstItem="AgX-bc-cq4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="WfW-42-QNj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AgX-bc-cq4" secondAttribute="trailing" constant="20" id="XmG-cl-OEe"/>
-                            <constraint firstItem="4w4-v3-nQM" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="jPn-Ix-feI"/>
+                            <constraint firstItem="kvP-Pc-EMB" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="hqE-Z9-jNg"/>
                             <constraint firstItem="AgX-bc-cq4" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-80" id="kyf-4l-4GD"/>
                             <constraint firstItem="Y4X-WD-BTu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mSt-rY-gE8"/>
                             <constraint firstItem="kvP-Pc-EMB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oex-d2-K2g"/>
-                            <constraint firstItem="kvP-Pc-EMB" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="qSb-lB-vwl"/>
+                            <constraint firstItem="mGX-XV-7jh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r5p-al-U1Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hFv-pC-4bm" secondAttribute="trailing" constant="20" id="rur-Sv-1KB"/>
+                            <constraint firstItem="mGX-XV-7jh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="s1i-eV-vqP"/>
                             <constraint firstItem="kvP-Pc-EMB" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="tDj-R9-xjF"/>
-                            <constraint firstItem="4w4-v3-nQM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xbx-ul-Xqz"/>
+                            <constraint firstItem="hFv-pC-4bm" firstAttribute="bottom" secondItem="kvP-Pc-EMB" secondAttribute="top" constant="128" id="tfr-3X-ZRp"/>
                             <constraint firstItem="hFv-pC-4bm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zCt-PF-byu"/>
-                            <constraint firstItem="hFv-pC-4bm" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="znR-IW-6cY"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="bottomTextField" destination="AgX-bc-cq4" id="Rex-fO-ngG"/>
                         <outlet property="cameraButton" destination="hxE-n8-02n" id="eLF-eu-t8A"/>
