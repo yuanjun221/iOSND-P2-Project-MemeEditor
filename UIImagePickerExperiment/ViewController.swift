@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
-    // MARK: -
-    // MARK: Variables
+
+    // MARK: - Variables
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
@@ -26,8 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     private var memedImage: UIImage!
     
     
-    // MARK: -
-    // MARK: Save Meme object
+    // MARK: - Save Meme object
     func saveMeme() {
         //Create the meme
         let _ = Meme(topText: topTextField.text!,
@@ -37,8 +36,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // MARK: -
-    // MARK: View lifecycle
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,8 +96,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // MARK: -
-    // MARK: Button actions
+    // MARK: - Button actions
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         presentImagePickerControllerWithSourceType(.PhotoLibrary)
     }
@@ -182,8 +179,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // MARK: -
-    // MARK: Image picker delegate
+    // MARK: - Image picker delegate
     func presentImagePickerControllerWithSourceType(type: UIImagePickerControllerSourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -203,10 +199,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // MARK: -
-    // MARK: Text field delegate
+    // MARK: - Text field delegate
     func textFieldDidBeginEditing(textField: UITextField) {
-        
         setBar(navigationBar, withAlpha: 0.0)
         setBar(bottomToolbar, withAlpha: 0.0)
         
@@ -217,7 +211,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        
         setBar(navigationBar, withAlpha: 1.0)
         setBar(bottomToolbar, withAlpha: 1.0)
         
@@ -242,8 +235,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    // MARK: -
-    // MARK: Toggle view when editing bottom textField
+    // MARK: - Toggle view when editing bottom textField
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
