@@ -61,7 +61,11 @@
                                                 <action selector="shareMemeImage:" destination="BYZ-38-t0r" id="wHx-7N-OVG"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ONU-gj-Pkt"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ONU-gj-Pkt">
+                                            <connections>
+                                                <action selector="resetEditor:" destination="BYZ-38-t0r" id="063-tT-4Ba"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -92,8 +96,11 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomTextField" destination="AgX-bc-cq4" id="Rex-fO-ngG"/>
+                        <outlet property="bottomToolbar" destination="Y4X-WD-BTu" id="Zh8-YT-d2r"/>
                         <outlet property="cameraButton" destination="hxE-n8-02n" id="eLF-eu-t8A"/>
                         <outlet property="imagePickerView" destination="kvP-Pc-EMB" id="nxp-xB-pfQ"/>
+                        <outlet property="navigationBar" destination="dJx-wM-E3h" id="EDY-nq-k2d"/>
+                        <outlet property="resetButton" destination="ONU-gj-Pkt" id="0ar-N6-7uK"/>
                         <outlet property="shareButton" destination="304-H9-gz6" id="yuD-xI-0Mb"/>
                         <outlet property="topTextField" destination="hFv-pC-4bm" id="qb7-xg-cET"/>
                     </connections>
