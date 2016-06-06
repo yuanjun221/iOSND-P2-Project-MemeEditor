@@ -133,7 +133,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func resetEditor(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Reset Editor", message: "Changes unsaved will be lost", preferredStyle: .ActionSheet)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         
         let resetAction = UIAlertAction(title:"Reset", style: .Destructive) { action in
             self.imagePickerView.image = nil
@@ -184,11 +184,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = type
+        pickerController.allowsEditing = true
         presentViewController(pickerController, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imagePickerView.image = image
         }
         dismissViewControllerAnimated(true, completion: nil)
