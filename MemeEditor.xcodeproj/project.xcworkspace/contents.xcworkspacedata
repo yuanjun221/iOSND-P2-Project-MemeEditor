@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:UIImagePickerExperiment.xcodeproj">
+      location = "self:/Users/Jun/Documents/Works/iOS/iOSND/MemeEditor/MemeEditor.xcodeproj">
    </FileRef>
 </Workspace>

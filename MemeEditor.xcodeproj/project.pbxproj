@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		BFA10E0A1D056D8900D8158E /* MemeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeStruct.swift; sourceTree = "<group>"; };
-		BFEA52AD1D02FDF10057B4A9 /* UIImagePickerExperiment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIImagePickerExperiment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFEA52AD1D02FDF10057B4A9 /* MemeEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFEA52B01D02FDF10057B4A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFEA52B21D02FDF10057B4A9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BFEA52B51D02FDF10057B4A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		BFEA52A41D02FDF10057B4A9 = {
 			isa = PBXGroup;
 			children = (
-				BFEA52AF1D02FDF10057B4A9 /* UIImagePickerExperiment */,
+				BFEA52AF1D02FDF10057B4A9 /* MemeEditor */,
 				BFEA52AE1D02FDF10057B4A9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		BFEA52AE1D02FDF10057B4A9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BFEA52AD1D02FDF10057B4A9 /* UIImagePickerExperiment.app */,
+				BFEA52AD1D02FDF10057B4A9 /* MemeEditor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BFEA52AF1D02FDF10057B4A9 /* UIImagePickerExperiment */ = {
+		BFEA52AF1D02FDF10057B4A9 /* MemeEditor */ = {
 			isa = PBXGroup;
 			children = (
 				BFEA52B01D02FDF10057B4A9 /* AppDelegate.swift */,
@@ -64,15 +64,16 @@
 				BFEA52B91D02FDF10057B4A9 /* LaunchScreen.storyboard */,
 				BFEA52BC1D02FDF10057B4A9 /* Info.plist */,
 			);
+			name = MemeEditor;
 			path = UIImagePickerExperiment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BFEA52AC1D02FDF10057B4A9 /* UIImagePickerExperiment */ = {
+		BFEA52AC1D02FDF10057B4A9 /* MemeEditor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BFEA52BF1D02FDF10057B4A9 /* Build configuration list for PBXNativeTarget "UIImagePickerExperiment" */;
+			buildConfigurationList = BFEA52BF1D02FDF10057B4A9 /* Build configuration list for PBXNativeTarget "MemeEditor" */;
 			buildPhases = (
 				BFEA52A91D02FDF10057B4A9 /* Sources */,
 				BFEA52AA1D02FDF10057B4A9 /* Frameworks */,
@@ -82,9 +83,9 @@
 			);
 			dependencies = (
 			);
-			name = UIImagePickerExperiment;
+			name = MemeEditor;
 			productName = UIImagePickerExperiment;
-			productReference = BFEA52AD1D02FDF10057B4A9 /* UIImagePickerExperiment.app */;
+			productReference = BFEA52AD1D02FDF10057B4A9 /* MemeEditor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -103,7 +104,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BFEA52A81D02FDF10057B4A9 /* Build configuration list for PBXProject "UIImagePickerExperiment" */;
+			buildConfigurationList = BFEA52A81D02FDF10057B4A9 /* Build configuration list for PBXProject "MemeEditor" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -116,7 +117,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BFEA52AC1D02FDF10057B4A9 /* UIImagePickerExperiment */,
+				BFEA52AC1D02FDF10057B4A9 /* MemeEditor */,
 			);
 		};
 /* End PBXProject section */
@@ -260,8 +261,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UIImagePickerExperiment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuanjun.UIImagePickerExperiment;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuanjun.MemeEditor;
+				PRODUCT_NAME = MemeEditor;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -274,8 +275,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UIImagePickerExperiment/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yuanjun.UIImagePickerExperiment;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yuanjun.MemeEditor;
+				PRODUCT_NAME = MemeEditor;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -283,7 +284,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BFEA52A81D02FDF10057B4A9 /* Build configuration list for PBXProject "UIImagePickerExperiment" */ = {
+		BFEA52A81D02FDF10057B4A9 /* Build configuration list for PBXProject "MemeEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFEA52BD1D02FDF10057B4A9 /* Debug */,
@@ -292,7 +293,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BFEA52BF1D02FDF10057B4A9 /* Build configuration list for PBXNativeTarget "UIImagePickerExperiment" */ = {
+		BFEA52BF1D02FDF10057B4A9 /* Build configuration list for PBXNativeTarget "MemeEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BFEA52C01D02FDF10057B4A9 /* Debug */,
