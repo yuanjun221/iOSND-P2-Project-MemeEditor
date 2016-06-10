@@ -41,28 +41,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPn-Ct-Enk">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="uPn-Ct-Enk" secondAttribute="height" multiplier="71:40" constant="-93" id="7hc-gO-Mdz"/>
-                                                <constraint firstAttribute="width" constant="120" id="AIy-mF-zJ7"/>
-                                                <constraint firstAttribute="height" constant="120" id="gam-RP-Z04"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSC-Fs-6FK">
-                                            <rect key="frame" x="128" y="48" width="456" height="24"/>
+                                            <rect key="frame" x="136" y="48" width="448" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPn-Ct-Enk">
+                                            <rect key="frame" x="9" y="0.0" width="119" height="119"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="uPn-Ct-Enk" secondAttribute="height" multiplier="1:1" id="4d8-55-BP6"/>
+                                                <constraint firstAttribute="width" constant="119" id="AIy-mF-zJ7"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GSC-Fs-6FK" firstAttribute="centerY" secondItem="psr-R0-W2W" secondAttribute="centerY" id="RUz-Fr-O0R"/>
                                         <constraint firstItem="GSC-Fs-6FK" firstAttribute="leading" secondItem="uPn-Ct-Enk" secondAttribute="trailing" constant="8" id="aPP-Qo-6g2"/>
                                         <constraint firstItem="GSC-Fs-6FK" firstAttribute="trailing" secondItem="psr-R0-W2W" secondAttribute="trailingMargin" constant="-8" id="qU6-XE-zlT"/>
                                         <constraint firstItem="uPn-Ct-Enk" firstAttribute="centerY" secondItem="psr-R0-W2W" secondAttribute="centerY" id="vij-kV-9Hy"/>
-                                        <constraint firstItem="uPn-Ct-Enk" firstAttribute="leading" secondItem="psr-R0-W2W" secondAttribute="leadingMargin" constant="-8" id="xHG-sO-KJs"/>
+                                        <constraint firstItem="uPn-Ct-Enk" firstAttribute="leading" secondItem="psr-R0-W2W" secondAttribute="leadingMargin" constant="1" id="xHG-sO-KJs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
