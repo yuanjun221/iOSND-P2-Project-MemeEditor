@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeEditorViewController.swift
 //  UIImagePickerExperiment
 //
 //  Created by Jun.Yuan on 16/6/4.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
 
     // MARK: - Variables
@@ -29,10 +29,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: - Save Meme object
     func saveMeme() {
         //Create the meme
-        let _ = Meme(topText: topTextField.text!,
+        let meme = Meme(topText: topTextField.text!,
                         bottomText: bottomTextField.text!,
                         originImage: imagePickerView.image!,
                         memedImage: memedImage)
+        
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
     
     
@@ -215,8 +217,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         setBar(navigationBar, withAlpha: 1.0)
         setBar(bottomToolbar, withAlpha: 1.0)
         
-        autoEnableResetButton()
-        
         let text = textField.text
         if text == "" {
             switch textField {
@@ -228,6 +228,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 break
             }
         }
+        
+        autoEnableResetButton()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
