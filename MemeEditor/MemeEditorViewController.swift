@@ -53,16 +53,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         setTextField(bottomTextField, withDelegate: self, textAttribute: memeTextAttributes, aligment: .Center)
     }
     
-    func setTextField(textfield: UITextField, withDelegate delegate: UITextFieldDelegate, textAttribute: [String: AnyObject], aligment: NSTextAlignment) {
-        textfield.delegate = delegate
-        textfield.defaultTextAttributes = textAttribute
-        textfield.textAlignment = aligment
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-
+        
         if imagePickerView.image != nil {
             shareButton.enabled = true
         } else {
@@ -71,6 +65,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         autoEnableResetButton()
         subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func setTextField(textfield: UITextField, withDelegate delegate: UITextFieldDelegate, textAttribute: [String: AnyObject], aligment: NSTextAlignment) {
+        textfield.delegate = delegate
+        textfield.defaultTextAttributes = textAttribute
+        textfield.textAlignment = aligment
     }
     
     func isEditorDefault() -> Bool {
@@ -88,11 +93,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
 
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
-    }
-    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -160,18 +160,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         dismissKeyboardForTextField(topTextField)
         dismissKeyboardForTextField(bottomTextField)
-    }
-    
-    func hideOrShowBar(bar: UIView) {
-        if bar.alpha == 0.0 {
-            setBar(bar, withAlpha: 1.0)
-        } else {
-            setBar(bar, withAlpha: 0.0)
-        }
-    }
-    
-    func setBar(bar:UIView, withAlpha alpha:CGFloat) {
-        UIView.animateWithDuration(0.3, animations: {bar.alpha = alpha})
     }
     
     func dismissKeyboardForTextField(textField: UITextField) {

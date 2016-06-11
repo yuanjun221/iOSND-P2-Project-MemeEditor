@@ -18,10 +18,11 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme) )
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         memeTableView.reloadData()
     }
     
@@ -37,11 +38,18 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let meme = memes[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeCell") as! MemeTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("memeTableCell") as! MemeTableViewCell
         cell.memedImage.image = meme.memedImage
-        cell.memeTextLabel.text = meme.topText + "..." + meme.bottomText
+        cell.topTextLabel.text = meme.topText
+        cell.bottomTextLabel.text = meme.bottomText
         
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let detailedVC = segue.destinationViewController as! MemeDetailedViewController
+        detailedVC.hidesBottomBarWhenPushed = true
+        let indexPath = memeTableView.indexPathForSelectedRow!
+        detailedVC.meme = memes[indexPath.row]
+    }
 }
