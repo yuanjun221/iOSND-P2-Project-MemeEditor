@@ -21,6 +21,18 @@ class MemeDetailedViewController: UIViewController {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let bar = navigationController!.navigationBar
-        hideOrShowBar(bar)
+        setBarAndImageView(bar, imageView: memedImageView)
     }
+    
+    func setBarAndImageView(UIBar: UIView, imageView: UIImageView) {
+        if UIBar.alpha == 0.0 {
+            setUIView(UIBar, withAlpha: 1.0)
+            setUIView(imageView, withBackgroundColor: UIColor.whiteColor())
+        } else {
+            setUIView(UIBar, withAlpha: 0.0)
+            setUIView(imageView, withBackgroundColor: UIColor.blackColor())
+        }
+    }
+    
+
 }

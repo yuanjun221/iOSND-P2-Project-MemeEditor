@@ -153,6 +153,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    
+    
+    
     // dismiss keyboard, hide or show bar when touch the screen view
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         hideOrShowBar(navigationBar)
@@ -192,8 +195,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // MARK: - Text field delegate
     func textFieldDidBeginEditing(textField: UITextField) {
-        setBar(navigationBar, withAlpha: 0.0)
-        setBar(bottomToolbar, withAlpha: 0.0)
+        setUIView(navigationBar, withAlpha: 0.0)
+        setUIView(bottomToolbar, withAlpha: 0.0)
         
         let text = textField.text
         if text == topString || text == bottomString {
@@ -202,8 +205,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        setBar(navigationBar, withAlpha: 1.0)
-        setBar(bottomToolbar, withAlpha: 1.0)
+        setUIView(navigationBar, withAlpha: 1.0)
+        setUIView(bottomToolbar, withAlpha: 1.0)
         
         let text = textField.text
         if text == "" {

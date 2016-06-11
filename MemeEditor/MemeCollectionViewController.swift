@@ -45,6 +45,31 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+
+        return getCellSize()
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 1.0
+    }
+
+    /*
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        memeCollectionView.performBatchUpdates(nil, completion: nil)
+    }
+    */
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        let size = getCellSize()
+        flowLayout.itemSize = size
+        flowLayout.invalidateLayout()
+    }
+    
+    func getCellSize() -> CGSize {
         let width = self.view.frame.size.width
         
         let dimension: CGFloat!
@@ -61,30 +86,11 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
         return size
     }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 1.0
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 1.0
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        memeCollectionView.performBatchUpdates(nil, completion: nil)
-    }
 
-    
-    override func viewWillLayoutSubviews() {
-        memeCollectionView.collectionViewLayout.invalidateLayout()
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let detailedVC = segue.destinationViewController as! MemeDetailedViewController
         detailedVC.hidesBottomBarWhenPushed = true
         let indexPathArray = memeCollectionView.indexPathsForSelectedItems()!
-        if indexPathArray.count == 1 {
             detailedVC.meme = memes[indexPathArray[0].row]
-        }
     }
 }
