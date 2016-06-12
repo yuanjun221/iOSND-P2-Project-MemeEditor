@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -278,12 +279,18 @@
                                                 <action selector="shareMemeImage:" destination="BYZ-38-t0r" id="wHx-7N-OVG"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ONU-gj-Pkt">
-                                            <color key="tintColor" red="0.92594361309999995" green="0.34263195029999999" blue="0.3924079506" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="resetEditor:" destination="BYZ-38-t0r" id="063-tT-4Ba"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="cancel" id="mQ0-pr-bra">
+                                                <connections>
+                                                    <action selector="quitEditor:" destination="BYZ-38-t0r" id="50V-kz-MEx"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="refresh" id="ONU-gj-Pkt">
+                                                <connections>
+                                                    <action selector="resetEditor:" destination="BYZ-38-t0r" id="063-tT-4Ba"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

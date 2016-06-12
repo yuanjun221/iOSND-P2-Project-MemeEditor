@@ -45,7 +45,6 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-
         return getCellSize()
     }
     
@@ -57,12 +56,6 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return 1.0
     }
 
-    /*
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        memeCollectionView.performBatchUpdates(nil, completion: nil)
-    }
-    */
-    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         let size = getCellSize()
         flowLayout.itemSize = size
@@ -86,11 +79,17 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
         return size
     }
+    
+    
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let detailedVC = segue.destinationViewController as! MemeDetailedViewController
         detailedVC.hidesBottomBarWhenPushed = true
         let indexPathArray = memeCollectionView.indexPathsForSelectedItems()!
-            detailedVC.meme = memes[indexPathArray[0].row]
+        detailedVC.meme = memes[indexPathArray[0].row]
+        detailedVC.indexPath = indexPathArray[0]
     }
 }

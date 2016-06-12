@@ -121,41 +121,57 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func generateMemedImage() -> UIImage {
-        navigationBar.hidden = true
-        bottomToolbar.hidden = true
-        // Render view to an image
+        hideBar(true)
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        hideBar(false)
         
-        navigationBar.hidden = false
-        bottomToolbar.hidden = false
         return memedImage
     }
     
+    func hideBar(boolen: Bool) {
+        navigationBar.hidden = boolen
+        bottomToolbar.hidden = boolen
+    }
+    
     @IBAction func resetEditor(sender: AnyObject) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        
-        let resetAction = UIAlertAction(title:"Reset", style: .Destructive) { action in
+        let titleText = "Editor will be reset to default."
+        let messageText = "Any unsaved changes will be lost."
+        let alertController = UIAlertController(title: titleText, message: messageText, preferredStyle: .ActionSheet)
+        let resetAction = UIAlertAction(title:"Reset Editor", style: .Destructive) { action in
             self.imagePickerView.image = nil
             self.topTextField.text = self.topString
             self.bottomTextField.text = self.bottomString
             self.shareButton.enabled = false
             self.resetButton.enabled = false
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
         let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel) { action in
-            self.dismissViewControllerAnimated(true, completion: nil)
         }
         alertController.addAction(resetAction)
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    
-    
-    
+    @IBAction func quitEditor(sender: AnyObject) {
+        if isEditorDefault() {
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            let titleText = "Quit Editor"
+            let messageText = "Any unsaved changes will be lost."
+            let alertController = UIAlertController(title: titleText, message: messageText, preferredStyle: .Alert)
+            let quitAction = UIAlertAction(title: "Quit", style: .Destructive) { action in
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel ) { action in
+            }
+            alertController.addAction(quitAction)
+            alertController.addAction(cancelAction)
+            presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+
     // dismiss keyboard, hide or show bar when touch the screen view
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         hideOrShowBar(navigationBar)
@@ -177,12 +193,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = type
-        pickerController.allowsEditing = true
         presentViewController(pickerController, animated: true, completion: nil)
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
         }
         dismissViewControllerAnimated(true, completion: nil)
@@ -219,7 +234,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 break
             }
         }
-        
         autoEnableResetButton()
     }
     

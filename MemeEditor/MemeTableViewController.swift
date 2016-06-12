@@ -60,5 +60,6 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         detailedVC.hidesBottomBarWhenPushed = true
         let indexPath = memeTableView.indexPathForSelectedRow!
         detailedVC.meme = memes[indexPath.row]
+        detailedVC.indexPath = indexPath
     }
 }
