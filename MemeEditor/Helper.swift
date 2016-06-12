@@ -24,3 +24,7 @@ func setUIView(view:UIView, withAlpha alpha:CGFloat) {
 func setUIView(view:UIView, withBackgroundColor color: UIColor) {
     UIView.animateWithDuration(0.3, animations: {view.backgroundColor = color})
 }
+
+let memeEditorViewControllerID = "MemeEditorViewController"
+// let memeTabBarControllerID = "TabBarController"
+// let memeTableViewControllerID = "memeTableViewController"

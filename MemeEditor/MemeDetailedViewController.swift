@@ -17,7 +17,9 @@ class MemeDetailedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(deleteMeme))
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(deleteMeme))
+        let editButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: #selector(editMeme))
+        self.navigationItem.rightBarButtonItems = [deleteButton, editButton]
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,11 +37,17 @@ class MemeDetailedViewController: UIViewController {
                 navigationController.popViewControllerAnimated(true)
             }
         }
-        let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel) { action in
-        }
+        let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func editMeme() {
+        let editorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
+        editorVC.pushedInMeme = meme
+        presentViewController(editorVC, animated: true, completion: nil)
+        // self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {

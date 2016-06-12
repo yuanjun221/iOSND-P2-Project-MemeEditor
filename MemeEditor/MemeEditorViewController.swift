@@ -21,8 +21,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var bottomToolbar: UIToolbar!
     
-    private let topString = "TOP"
-    private let bottomString = "BOTTOM"
+    var pushedInMeme: Meme?
+    
+    private let topStringDefault = "TOP"
+    private let bottomStringDefault = "BOTTOM"
     private var memedImage: UIImage!
     
     
@@ -51,12 +53,20 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         setTextField(topTextField, withDelegate: self, textAttribute: memeTextAttributes, aligment: .Center)
         setTextField(bottomTextField, withDelegate: self, textAttribute: memeTextAttributes, aligment: .Center)
+        
+        if let meme = pushedInMeme {
+            imagePickerView.image = meme.originImage
+            topTextField.text = meme.topText
+            bottomTextField.text = meme.bottomText
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+
+
         if imagePickerView.image != nil {
             shareButton.enabled = true
         } else {
@@ -79,7 +89,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func isEditorDefault() -> Bool {
-        if topTextField.text == topString && bottomTextField.text == bottomString && imagePickerView.image == nil {
+        if topTextField.text == topStringDefault && bottomTextField.text == bottomStringDefault && imagePickerView.image == nil {
             return true
         }
         return false
@@ -142,13 +152,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let alertController = UIAlertController(title: titleText, message: messageText, preferredStyle: .ActionSheet)
         let resetAction = UIAlertAction(title:"Reset Editor", style: .Destructive) { action in
             self.imagePickerView.image = nil
-            self.topTextField.text = self.topString
-            self.bottomTextField.text = self.bottomString
+            self.topTextField.text = self.topStringDefault
+            self.bottomTextField.text = self.bottomStringDefault
             self.shareButton.enabled = false
             self.resetButton.enabled = false
         }
-        let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel) { action in
-        }
+        let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
         alertController.addAction(resetAction)
         alertController.addAction(cancelAction)
         presentViewController(alertController, animated: true, completion: nil)
@@ -160,12 +169,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         } else {
             let titleText = "Quit Editor"
             let messageText = "Any unsaved changes will be lost."
-            let alertController = UIAlertController(title: titleText, message: messageText, preferredStyle: .Alert)
-            let quitAction = UIAlertAction(title: "Quit", style: .Destructive) { action in
+            let alertController = UIAlertController(title: titleText, message: messageText, preferredStyle: .ActionSheet)
+            let quitAction = UIAlertAction(title: "Quit Editor", style: .Destructive) { action in
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel ) { action in
-            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
             alertController.addAction(quitAction)
             alertController.addAction(cancelAction)
             presentViewController(alertController, animated: true, completion: nil)
@@ -214,7 +222,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         setUIView(bottomToolbar, withAlpha: 0.0)
         
         let text = textField.text
-        if text == topString || text == bottomString {
+        if text == topStringDefault || text == bottomStringDefault {
             textField.text = nil
         }
     }
@@ -227,9 +235,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if text == "" {
             switch textField {
             case topTextField:
-                textField.text = topString
+                textField.text = topStringDefault
             case bottomTextField:
-                textField.text = bottomString
+                textField.text = bottomStringDefault
             default:
                 break
             }

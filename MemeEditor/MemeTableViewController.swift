@@ -27,7 +27,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func addMeme() {
-        let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
         presentViewController(memeEditorVC, animated: true, completion: nil)
     }
     

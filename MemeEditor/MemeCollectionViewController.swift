@@ -20,6 +20,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
+        memeCollectionView.allowsMultipleSelection = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -28,7 +29,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     }
     
     func addMeme() {
-        let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
+        let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
         presentViewController(memeEditorVC, animated: true, completion: nil)
     }
     
@@ -80,11 +81,6 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return size
     }
     
-    
-    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let detailedVC = segue.destinationViewController as! MemeDetailedViewController
         detailedVC.hidesBottomBarWhenPushed = true

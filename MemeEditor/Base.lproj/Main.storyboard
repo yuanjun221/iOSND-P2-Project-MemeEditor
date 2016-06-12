@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="DUl-Pb-OVr">
             <objects>
-                <tabBarController id="gao-tb-CIv" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="gao-tb-CIv" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="WUX-NW-7df">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -29,7 +29,7 @@
         <!--Sent Memes-->
         <scene sceneID="GcY-hL-FGQ">
             <objects>
-                <tableViewController id="Nlq-ku-ycJ" customClass="MemeTableViewController" customModule="MemeEditor" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="memeTableViewController" id="Nlq-ku-ycJ" customClass="MemeTableViewController" customModule="MemeEditor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" sectionHeaderHeight="28" sectionFooterHeight="28" id="NAw-F2-Ezv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,11 +39,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mFu-21-byu" id="psr-R0-W2W">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="120"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPn-Ct-Enk">
-                                            <rect key="frame" x="9" y="8" width="100" height="100"/>
+                                            <rect key="frame" x="9" y="10" width="100" height="100"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="4WE-zc-hXQ"/>
@@ -70,7 +70,7 @@
                                         <constraint firstItem="tBB-xm-ptI" firstAttribute="leading" secondItem="uPn-Ct-Enk" secondAttribute="trailing" constant="8" id="giO-8F-Gbc"/>
                                         <constraint firstItem="tBB-xm-ptI" firstAttribute="bottom" secondItem="psr-R0-W2W" secondAttribute="bottomMargin" constant="-20" id="mFW-pG-nGI"/>
                                         <constraint firstItem="tBB-xm-ptI" firstAttribute="trailing" secondItem="psr-R0-W2W" secondAttribute="trailingMargin" id="rvq-4X-zs5"/>
-                                        <constraint firstItem="uPn-Ct-Enk" firstAttribute="centerY" secondItem="psr-R0-W2W" secondAttribute="centerY" constant="-1.75" id="vij-kV-9Hy"/>
+                                        <constraint firstItem="uPn-Ct-Enk" firstAttribute="centerY" secondItem="psr-R0-W2W" secondAttribute="centerY" id="vij-kV-9Hy"/>
                                         <constraint firstItem="qs4-bB-XKr" firstAttribute="trailing" secondItem="psr-R0-W2W" secondAttribute="trailingMargin" id="x30-T2-ynp"/>
                                         <constraint firstItem="uPn-Ct-Enk" firstAttribute="leading" secondItem="psr-R0-W2W" secondAttribute="leadingMargin" constant="1" id="xHG-sO-KJs"/>
                                     </constraints>
@@ -273,7 +273,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-wM-E3h">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
-                                    <navigationItem id="Yz7-ga-mbc">
+                                    <navigationItem title="Meme Editor" id="Yz7-ga-mbc">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="304-H9-gz6">
                                             <connections>
                                                 <action selector="shareMemeImage:" destination="BYZ-38-t0r" id="wHx-7N-OVG"/>
@@ -340,6 +340,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kw3-Pi-2JQ"/>
+        <segue reference="Yw8-mD-bJi"/>
     </inferredMetricsTieBreakers>
 </document>
