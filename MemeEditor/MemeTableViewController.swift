@@ -13,17 +13,36 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
+ 
 
     @IBOutlet var memeTableView: UITableView!
+    var editTableButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(editTable))
+        editTableButton = self.navigationItem.leftBarButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         memeTableView.reloadData()
+        if memes.count == 0 {
+            editTableButton.enabled = false
+        } else {
+            editTableButton.enabled = true
+        }
+    }
+    
+    func editTable() {
+        if memeTableView.editing {
+            editTableButton.title = "Edit"
+            memeTableView.setEditing(false, animated: true)
+        } else {
+            editTableButton.title = "Done"
+            memeTableView.setEditing(true, animated: true)
+        }
     }
     
     func addMeme() {
@@ -53,6 +72,19 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        moveItemAtIndex(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
+    }
+    
+    func moveItemAtIndex(fromIndex start: Int, toIndex end: Int) {
+        if start == end {
+            return
+        }
+        let selectedMeme = memes[start]
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(start)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.insert(selectedMeme, atIndex: end)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

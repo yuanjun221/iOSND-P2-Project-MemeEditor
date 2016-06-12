@@ -13,7 +13,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
-    
+
     @IBOutlet var memeCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
