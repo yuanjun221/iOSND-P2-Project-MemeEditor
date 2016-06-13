@@ -15,3 +15,9 @@ struct Meme {
     var originImage: UIImage
     var memedImage: UIImage
 }
+
+struct MemeEditorStatus {
+    var topText: String!
+    var bottomText: String!
+    var originImage: UIImage?
+}

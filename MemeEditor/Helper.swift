@@ -36,3 +36,7 @@ func setSegue(segue: UIStoryboardSegue, withMemes memes:[Meme], indexPath: NSInd
     detailedVC.indexPath = indexPath
     detailedVC.memeArrayCount = memes.count
 }
+
+func == (left: MemeEditorStatus, right: MemeEditorStatus) -> Bool {
+    return (left.topText == right.topText) && (left.bottomText == right.bottomText) && (left.originImage == right.originImage)
+}

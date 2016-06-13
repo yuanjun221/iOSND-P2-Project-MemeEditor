@@ -13,10 +13,14 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
+    
+    private var indexPath: NSIndexPath {
+        return memeTableView.indexPathForSelectedRow!
+    }
  
-
     @IBOutlet var memeTableView: UITableView!
-    var editTableButton: UIBarButtonItem!
+    
+    private var editTableButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +53,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
         presentViewController(memeEditorVC, animated: true, completion: nil)
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -85,10 +89,6 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let selectedMeme = memes[start]
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(start)
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.insert(selectedMeme, atIndex: end)
-    }
-    
-    private var indexPath: NSIndexPath {
-        return memeTableView.indexPathForSelectedRow!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

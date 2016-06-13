@@ -13,6 +13,10 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
+    
+    private var indexPath: NSIndexPath {
+        return memeCollectionView.indexPathsForSelectedItems()![0]
+    }
 
     @IBOutlet var memeCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -88,9 +92,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return size
     }
 
-    private var indexPath: NSIndexPath {
-        return memeCollectionView.indexPathsForSelectedItems()![0]
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         setSegue(segue, withMemes: memes, indexPath: indexPath)

@@ -23,10 +23,22 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     var pushedInMeme: Meme?
     
-    private let topStringDefault = "TOP"
-    private let bottomStringDefault = "BOTTOM"
     private var memedImage: UIImage!
     
+    private var memeEditorStatusDefault: MemeEditorStatus {
+        return MemeEditorStatus(topText: "TOP", bottomText: "BOTTOM", originImage: nil)
+    }
+    
+    private var memeEditorStatusPushedIn: MemeEditorStatus {
+        if let pushedInMeme = pushedInMeme {
+            return MemeEditorStatus(topText: pushedInMeme.topText, bottomText:pushedInMeme.bottomText, originImage:pushedInMeme.originImage)
+        }
+        return memeEditorStatusDefault
+    }
+    
+    private var memeEditorStatusCurrent: MemeEditorStatus {
+        return MemeEditorStatus(topText: topTextField.text, bottomText: bottomTextField.text, originImage: imagePickerView.image)
+    }
     
     // MARK: - Save Meme object
     func saveMeme() {
@@ -88,16 +100,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         textfield.defaultTextAttributes = textAttribute
         textfield.textAlignment = aligment
     }
-    
-    func isEditorDefault() -> Bool {
-        if topTextField.text == topStringDefault && bottomTextField.text == bottomStringDefault && imagePickerView.image == nil {
-            return true
-        }
-        return false
-    }
-    
+
     func autoEnableResetButton() {
-        if isEditorDefault() {
+        if memeEditorStatusCurrent == memeEditorStatusDefault {
             resetButton.enabled = false
         } else {
             resetButton.enabled = true
@@ -153,8 +158,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let alertController = UIAlertController(title: titleText, message: messageText, preferredStyle: .ActionSheet)
         let resetAction = UIAlertAction(title:"Reset Editor", style: .Destructive) { action in
             self.imagePickerView.image = nil
-            self.topTextField.text = self.topStringDefault
-            self.bottomTextField.text = self.bottomStringDefault
+            self.topTextField.text = self.memeEditorStatusDefault.topText
+            self.bottomTextField.text = self.memeEditorStatusDefault.bottomText
             self.shareButton.enabled = false
             self.resetButton.enabled = false
         }
@@ -165,7 +170,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction func quitEditor(sender: AnyObject) {
-        if isEditorDefault() {
+        if (memeEditorStatusCurrent == memeEditorStatusDefault) || (memeEditorStatusCurrent == memeEditorStatusPushedIn) {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
             let titleText = "Quit Editor"
@@ -223,7 +228,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         setUIView(bottomToolbar, withAlpha: 0.0)
         
         let text = textField.text
-        if text == topStringDefault || text == bottomStringDefault {
+        if text == memeEditorStatusDefault.topText || text == memeEditorStatusDefault.bottomText {
             textField.text = nil
         }
     }
@@ -236,9 +241,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         if text == "" {
             switch textField {
             case topTextField:
-                textField.text = topStringDefault
+                textField.text = memeEditorStatusDefault.topText
             case bottomTextField:
-                textField.text = bottomStringDefault
+                textField.text = memeEditorStatusDefault.bottomText
             default:
                 break
             }
