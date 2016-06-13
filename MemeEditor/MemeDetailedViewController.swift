@@ -12,6 +12,7 @@ class MemeDetailedViewController: UIViewController {
     
     var meme: Meme!
     var indexPath: NSIndexPath!
+    var memeArrayCount: Int!
     
     @IBOutlet weak var memedImageView: UIImageView!
 
@@ -25,6 +26,17 @@ class MemeDetailedViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         memedImageView.image = meme.memedImage
+        
+        // auto pop to main screen if user add a new meme edited from detail view
+        if (UIApplication.sharedApplication().delegate as! AppDelegate).memes.count != memeArrayCount {
+            autoPopViewController()
+        }
+    }
+    
+    func autoPopViewController() {
+        if let navigationController = self.navigationController {
+            navigationController.popViewControllerAnimated(true)
+        }
     }
     
     func deleteMeme() {
@@ -33,9 +45,7 @@ class MemeDetailedViewController: UIViewController {
         
         let deleteAction = UIAlertAction(title:"Delete Meme", style: .Destructive) { action in
             (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(self.indexPath.row)
-            if let navigationController = self.navigationController {
-                navigationController.popViewControllerAnimated(true)
-            }
+            self.autoPopViewController()
         }
         let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
         alertController.addAction(deleteAction)

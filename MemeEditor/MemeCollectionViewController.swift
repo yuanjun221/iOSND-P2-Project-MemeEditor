@@ -28,6 +28,13 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         memeCollectionView.reloadData()
     }
     
+
+    
+    
+    
+    
+    
+    
     func addMeme() {
         let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
         presentViewController(memeEditorVC, animated: true, completion: nil)
@@ -80,12 +87,12 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         }
         return size
     }
+
+    private var indexPath: NSIndexPath {
+        return memeCollectionView.indexPathsForSelectedItems()![0]
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let detailedVC = segue.destinationViewController as! MemeDetailedViewController
-        detailedVC.hidesBottomBarWhenPushed = true
-        let indexPathArray = memeCollectionView.indexPathsForSelectedItems()!
-        detailedVC.meme = memes[indexPathArray[0].row]
-        detailedVC.indexPath = indexPathArray[0]
+        setSegue(segue, withMemes: memes, indexPath: indexPath)
     }
 }

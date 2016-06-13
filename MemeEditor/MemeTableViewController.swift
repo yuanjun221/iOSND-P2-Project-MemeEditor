@@ -87,11 +87,11 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.insert(selectedMeme, atIndex: end)
     }
     
+    private var indexPath: NSIndexPath {
+        return memeTableView.indexPathForSelectedRow!
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let detailedVC = segue.destinationViewController as! MemeDetailedViewController
-        detailedVC.hidesBottomBarWhenPushed = true
-        let indexPath = memeTableView.indexPathForSelectedRow!
-        detailedVC.meme = memes[indexPath.row]
-        detailedVC.indexPath = indexPath
+        setSegue(segue, withMemes: memes, indexPath: indexPath)
     }
 }

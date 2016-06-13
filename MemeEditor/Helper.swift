@@ -28,3 +28,11 @@ func setUIView(view:UIView, withBackgroundColor color: UIColor) {
 let memeEditorViewControllerID = "MemeEditorViewController"
 // let memeTabBarControllerID = "TabBarController"
 // let memeTableViewControllerID = "memeTableViewController"
+
+func setSegue(segue: UIStoryboardSegue, withMemes memes:[Meme], indexPath: NSIndexPath) {
+    let detailedVC = segue.destinationViewController as! MemeDetailedViewController
+    detailedVC.hidesBottomBarWhenPushed = true
+    detailedVC.meme = memes[indexPath.row]
+    detailedVC.indexPath = indexPath
+    detailedVC.memeArrayCount = memes.count
+}
