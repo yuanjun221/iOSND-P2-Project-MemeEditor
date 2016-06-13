@@ -26,8 +26,6 @@ func setUIView(view:UIView, withBackgroundColor color: UIColor) {
 }
 
 let memeEditorViewControllerID = "MemeEditorViewController"
-// let memeTabBarControllerID = "TabBarController"
-// let memeTableViewControllerID = "memeTableViewController"
 
 func setSegue(segue: UIStoryboardSegue, withMemes memes:[Meme], indexPath: NSIndexPath) {
     let detailedVC = segue.destinationViewController as! MemeDetailedViewController
@@ -35,6 +33,10 @@ func setSegue(segue: UIStoryboardSegue, withMemes memes:[Meme], indexPath: NSInd
     detailedVC.meme = memes[indexPath.row]
     detailedVC.indexPath = indexPath
     detailedVC.memeArrayCount = memes.count
+}
+
+func == (left:Meme, right:Meme) -> Bool {
+    return (left.topText == right.topText) && (left.bottomText == right.bottomText) && (left.originImage == right.originImage) && (left.memedImage == right.memedImage)
 }
 
 func == (left: MemeEditorStatus, right: MemeEditorStatus) -> Bool {

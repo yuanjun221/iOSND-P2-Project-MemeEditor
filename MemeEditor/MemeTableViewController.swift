@@ -20,12 +20,12 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
  
     @IBOutlet var memeTableView: UITableView!
     
-    private var editTableButton: UIBarButtonItem!
+    private var editButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(editTable))
-        editTableButton = self.navigationItem.leftBarButtonItem
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(toggleEditButton))
+        editButton = self.navigationItem.leftBarButtonItem
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
     }
     
@@ -33,18 +33,18 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         memeTableView.reloadData()
         if memes.count == 0 {
-            editTableButton.enabled = false
+            editButton.enabled = false
         } else {
-            editTableButton.enabled = true
+            editButton.enabled = true
         }
     }
     
-    func editTable() {
+    func toggleEditButton() {
         if memeTableView.editing {
-            editTableButton.title = "Edit"
+            editButton.title = "Edit"
             memeTableView.setEditing(false, animated: true)
         } else {
-            editTableButton.title = "Done"
+            editButton.title = "Done"
             memeTableView.setEditing(true, animated: true)
         }
     }

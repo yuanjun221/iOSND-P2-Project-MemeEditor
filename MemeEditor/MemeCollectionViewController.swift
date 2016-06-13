@@ -13,7 +13,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
-    
+
     private var indexPath: NSIndexPath {
         return memeCollectionView.indexPathsForSelectedItems()![0]
     }
@@ -21,23 +21,16 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
     @IBOutlet var memeCollectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
-        memeCollectionView.allowsMultipleSelection = true
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         memeCollectionView.reloadData()
     }
-    
-
-    
-    
-    
-    
-    
     
     func addMeme() {
         let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
@@ -92,8 +85,6 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return size
     }
 
-
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         setSegue(segue, withMemes: memes, indexPath: indexPath)
     }

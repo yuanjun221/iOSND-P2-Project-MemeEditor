@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-struct Meme {
+struct Meme:Equatable {
     var topText: String
     var bottomText: String
     var originImage: UIImage
     var memedImage: UIImage
 }
 
-struct MemeEditorStatus {
+struct MemeEditorStatus: Equatable {
     var topText: String!
     var bottomText: String!
     var originImage: UIImage?
