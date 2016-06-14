@@ -14,7 +14,7 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
     
-    private var indexPath: NSIndexPath {
+    private var indexPathToTransmit: NSIndexPath {
         return memeTableView.indexPathForSelectedRow!
     }
  
@@ -32,21 +32,21 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         memeTableView.reloadData()
-        if memes.count == 0 {
-            editButton.enabled = false
-        } else {
-            editButton.enabled = true
-        }
+        enableButton(editButton, withMemesCount: memes.count)
+    }
+        
+    func toggleEditButton() {
+        setTableViewWithEdtingStatus(memeTableView.editing)
     }
     
-    func toggleEditButton() {
-        if memeTableView.editing {
-            editButton.title = "Edit"
-            memeTableView.setEditing(false, animated: true)
-        } else {
-            editButton.title = "Done"
-            memeTableView.setEditing(true, animated: true)
-        }
+    func setTableViewWithEdtingStatus(isEditing: Bool) {
+        let barButtonTitle = isEditing ? "Edit" : "Done"
+        let alpha = isEditing ? 1 : 0
+        editButton.title = ""      // make the button title transition more smoothly
+        editButton.title = barButtonTitle
+        memeTableView.setEditing(!isEditing, animated: true)
+        setUIView(tabBarController!.tabBar, withAlpha: CGFloat(alpha))
+        navigationItem.rightBarButtonItem = isEditing ? UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme)) : nil
     }
     
     func addMeme() {
@@ -92,6 +92,6 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        setSegue(segue, withMemes: memes, indexPath: indexPath)
+        setSegue(segue, withMemes: memes, indexPath: indexPathToTransmit)
     }
 }

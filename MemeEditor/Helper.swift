@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+let memeEditorViewControllerID = "MemeEditorViewController"
+let segueFromCollectionToEditorID = "collectionToEditor"
+
 func hideOrShowBar(UIBar: UIView) {
     if UIBar.alpha == 0.0 {
         setUIView(UIBar, withAlpha: 1.0)
@@ -25,7 +28,13 @@ func setUIView(view:UIView, withBackgroundColor color: UIColor) {
     UIView.animateWithDuration(0.3, animations: {view.backgroundColor = color})
 }
 
-let memeEditorViewControllerID = "MemeEditorViewController"
+func enableButton(button: UIBarButtonItem, withMemesCount count: Int) {
+    if count == 0 {
+        button.enabled = false
+    } else {
+        button.enabled = true
+    }
+}
 
 func setSegue(segue: UIStoryboardSegue, withMemes memes:[Meme], indexPath: NSIndexPath) {
     let detailedVC = segue.destinationViewController as! MemeDetailedViewController

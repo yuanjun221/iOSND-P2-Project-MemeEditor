@@ -121,20 +121,31 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y6z-j4-yZu">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <gestureRecognizers/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="49s-W5-vtC" userLabel="Check Mark">
+                                            <rect key="frame" x="72" y="72" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="esV-ah-Ks9"/>
+                                                <constraint firstAttribute="height" constant="22" id="pUZ-1g-Xnf"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="Y6z-j4-yZu" firstAttribute="centerX" secondItem="zu1-qh-YRN" secondAttribute="centerX" id="CCJ-uH-JRW"/>
+                                    <constraint firstItem="49s-W5-vtC" firstAttribute="bottom" secondItem="zu1-qh-YRN" secondAttribute="bottomMargin" constant="2" id="F81-Rh-OLL"/>
+                                    <constraint firstItem="49s-W5-vtC" firstAttribute="trailing" secondItem="zu1-qh-YRN" secondAttribute="trailingMargin" constant="2" id="FBF-Wa-waC"/>
                                     <constraint firstItem="Y6z-j4-yZu" firstAttribute="width" secondItem="zu1-qh-YRN" secondAttribute="width" id="RKG-A6-2Xc"/>
                                     <constraint firstItem="Y6z-j4-yZu" firstAttribute="height" secondItem="zu1-qh-YRN" secondAttribute="height" id="onb-7f-RjZ"/>
                                     <constraint firstItem="Y6z-j4-yZu" firstAttribute="centerY" secondItem="zu1-qh-YRN" secondAttribute="centerY" id="tcK-uE-apv"/>
                                 </constraints>
                                 <size key="customSize" width="100" height="100"/>
                                 <connections>
+                                    <outlet property="checkMark" destination="49s-W5-vtC" id="Swu-eC-i0Z"/>
                                     <outlet property="memedImage" destination="Y6z-j4-yZu" id="c2f-uN-OXS"/>
-                                    <segue destination="UK7-oP-iYZ" kind="show" id="kw3-Pi-2JQ"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -147,6 +158,7 @@
                     <connections>
                         <outlet property="flowLayout" destination="Fy6-We-qaN" id="4bq-bi-yvX"/>
                         <outlet property="memeCollectionView" destination="CSN-Y6-uhi" id="5A1-GF-otu"/>
+                        <segue destination="UK7-oP-iYZ" kind="show" identifier="collectionToEditor" id="lvC-YY-pOw"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udb-dB-z9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -340,6 +352,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kw3-Pi-2JQ"/>
+        <segue reference="lvC-YY-pOw"/>
     </inferredMetricsTieBreakers>
 </document>
