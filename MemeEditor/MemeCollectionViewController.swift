@@ -32,9 +32,9 @@ class MemeCollectionViewController: UIViewController {
 extension MemeCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Select", style: .Plain, target: self, action: #selector(toggleSelectButton))
-        selectButton = self.navigationItem.leftBarButtonItem
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Select", style: .Plain, target: self, action: #selector(toggleSelectButton))
+        selectButton = navigationItem.leftBarButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
     }
     
     override func viewWillAppear(animated: Bool) {

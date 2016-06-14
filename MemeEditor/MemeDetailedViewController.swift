@@ -24,7 +24,7 @@ extension MemeDetailedViewController {
         super.viewDidLoad()
         let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(deleteMeme))
         let editButton = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: #selector(editMeme))
-        self.navigationItem.rightBarButtonItems = [deleteButton, editButton]
+        navigationItem.rightBarButtonItems = [deleteButton, editButton]
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -28,9 +28,9 @@ class MemeTableViewController: UIViewController {
 extension MemeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(toggleEditButton))
-        editButton = self.navigationItem.leftBarButtonItem
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(toggleEditButton))
+        editButton = navigationItem.leftBarButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme))
     }
     
     override func viewWillAppear(animated: Bool) {
