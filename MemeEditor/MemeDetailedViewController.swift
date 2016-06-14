@@ -8,14 +8,18 @@
 
 import UIKit
 
+// MARK: - ViewController Properties
 class MemeDetailedViewController: UIViewController {
-    
     var meme: Meme!
     var indexPath: NSIndexPath!
     var memeArrayCount: Int!
     
     @IBOutlet weak var memedImageView: UIImageView!
+}
 
+
+// MARK:- ViewController Lifecycle
+extension MemeDetailedViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(deleteMeme))
@@ -38,7 +42,30 @@ class MemeDetailedViewController: UIViewController {
             navigationController.popViewControllerAnimated(true)
         }
     }
+}
+
+
+// MARK: - View Touching Behavior
+extension MemeDetailedViewController {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        let bar = navigationController!.navigationBar
+        setAlphaForUIBar(bar, backgroundColorForImageView: memedImageView)
+    }
     
+    func setAlphaForUIBar(UIBar: UIView, backgroundColorForImageView imageView: UIImageView) {
+        if UIBar.alpha == 0.0 {
+            setUIView(UIBar, withAlpha: 1.0)
+            setUIView(imageView, withBackgroundColor: UIColor.whiteColor())
+        } else {
+            setUIView(UIBar, withAlpha: 0.0)
+            setUIView(imageView, withBackgroundColor: UIColor.blackColor())
+        }
+    }
+}
+
+
+// MARK:- Buttons Action
+extension MemeDetailedViewController {
     func deleteMeme() {
         let titleText = "This memed image will be deleted."
         let alertController = UIAlertController(title: titleText, message: nil, preferredStyle: .ActionSheet)
@@ -57,21 +84,5 @@ class MemeDetailedViewController: UIViewController {
         let editorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
         editorVC.pushedInMeme = meme
         presentViewController(editorVC, animated: true, completion: nil)
-        // self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let bar = navigationController!.navigationBar
-        setBarAndImageView(bar, imageView: memedImageView)
-    }
-    
-    func setBarAndImageView(UIBar: UIView, imageView: UIImageView) {
-        if UIBar.alpha == 0.0 {
-            setUIView(UIBar, withAlpha: 1.0)
-            setUIView(imageView, withBackgroundColor: UIColor.whiteColor())
-        } else {
-            setUIView(UIBar, withAlpha: 0.0)
-            setUIView(imageView, withBackgroundColor: UIColor.blackColor())
-        }
     }
 }

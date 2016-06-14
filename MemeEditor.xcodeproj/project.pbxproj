@@ -49,6 +49,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF95AA4E1D0FEFEC001E9EC5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BFDACF371D0AF1F2004CCF5F /* MemeTableViewController.swift */,
+				BFDACF351D0AC1CF004CCF5F /* MemeCollectionViewController.swift */,
+				BFDACF391D0AF223004CCF5F /* MemeDetailedViewController.swift */,
+				BFEA52B21D02FDF10057B4A9 /* MemeEditorViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		BF95AA4F1D0FF00D001E9EC5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BFDACF3B1D0B0268004CCF5F /* MemeTableViewCell.swift */,
+				BFDACF3F1D0B9575004CCF5F /* MemeCollectionViewCell.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		BF95AA501D0FF051001E9EC5 /* DataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				BFA10E0A1D056D8900D8158E /* Meme.swift */,
+			);
+			name = DataStruct;
+			sourceTree = "<group>";
+		};
+		BF95AA511D0FF09E001E9EC5 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				BFEA52B41D02FDF10057B4A9 /* Main.storyboard */,
+				BFEA52B91D02FDF10057B4A9 /* LaunchScreen.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		BF95AA521D0FF0D7001E9EC5 /* HelperFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				BF8E17891D0BE06000C50019 /* Helper.swift */,
+			);
+			name = HelperFunctions;
+			sourceTree = "<group>";
+		};
 		BFEA52A41D02FDF10057B4A9 = {
 			isa = PBXGroup;
 			children = (
@@ -68,18 +113,13 @@
 		BFEA52AF1D02FDF10057B4A9 /* MemeEditor */ = {
 			isa = PBXGroup;
 			children = (
-				BFA10E0A1D056D8900D8158E /* Meme.swift */,
-				BFDACF371D0AF1F2004CCF5F /* MemeTableViewController.swift */,
-				BFDACF3B1D0B0268004CCF5F /* MemeTableViewCell.swift */,
-				BFDACF351D0AC1CF004CCF5F /* MemeCollectionViewController.swift */,
-				BFDACF3F1D0B9575004CCF5F /* MemeCollectionViewCell.swift */,
-				BFEA52B21D02FDF10057B4A9 /* MemeEditorViewController.swift */,
-				BFDACF391D0AF223004CCF5F /* MemeDetailedViewController.swift */,
+				BF95AA4E1D0FEFEC001E9EC5 /* ViewController */,
+				BF95AA4F1D0FF00D001E9EC5 /* Cell */,
+				BF95AA501D0FF051001E9EC5 /* DataStruct */,
+				BF95AA521D0FF0D7001E9EC5 /* HelperFunctions */,
+				BF95AA511D0FF09E001E9EC5 /* StoryBoard */,
 				BFEA52B01D02FDF10057B4A9 /* AppDelegate.swift */,
-				BF8E17891D0BE06000C50019 /* Helper.swift */,
-				BFEA52B41D02FDF10057B4A9 /* Main.storyboard */,
 				BFEA52B71D02FDF10057B4A9 /* Assets.xcassets */,
-				BFEA52B91D02FDF10057B4A9 /* LaunchScreen.storyboard */,
 				BFEA52BC1D02FDF10057B4A9 /* Info.plist */,
 			);
 			path = MemeEditor;

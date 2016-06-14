@@ -8,20 +8,24 @@
 
 import UIKit
 
-class MemeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+// MARK:- View Controller Properties
+class MemeTableViewController: UIViewController {
     var memes: [Meme] {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).memes
     }
     
+    @IBOutlet var memeTableView: UITableView!
+    
     private var indexPathToTransmit: NSIndexPath {
         return memeTableView.indexPathForSelectedRow!
     }
- 
-    @IBOutlet var memeTableView: UITableView!
-    
+
     private var editButton: UIBarButtonItem!
-    
+}
+
+
+// MARK:- View Controller Lifecycle
+extension MemeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(toggleEditButton))
@@ -34,26 +38,38 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         memeTableView.reloadData()
         enableButton(editButton, withMemesCount: memes.count)
     }
-        
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        setSegue(segue, withMemes: memes, indexPath: indexPathToTransmit)
+    }
+}
+
+
+// MARK:- Buttons Action
+extension MemeTableViewController {
+    // Buttons Action
     func toggleEditButton() {
         setTableViewWithEdtingStatus(memeTableView.editing)
-    }
-    
-    func setTableViewWithEdtingStatus(isEditing: Bool) {
-        let barButtonTitle = isEditing ? "Edit" : "Done"
-        let alpha = isEditing ? 1 : 0
-        editButton.title = ""      // make the button title transition more smoothly
-        editButton.title = barButtonTitle
-        memeTableView.setEditing(!isEditing, animated: true)
-        setUIView(tabBarController!.tabBar, withAlpha: CGFloat(alpha))
-        navigationItem.rightBarButtonItem = isEditing ? UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme)) : nil
     }
     
     func addMeme() {
         let memeEditorVC = storyboard?.instantiateViewControllerWithIdentifier(memeEditorViewControllerID) as! MemeEditorViewController
         presentViewController(memeEditorVC, animated: true, completion: nil)
     }
+    
+    // Helper Function
+    func setTableViewWithEdtingStatus(isEditing: Bool) {
+        editButton.title = ""      // make the button title transition more smoothly
+        editButton.title = isEditing ? "Edit" : "Done"
+        memeTableView.setEditing(!isEditing, animated: true)
+        setUIView(tabBarController!.tabBar, withAlpha: CGFloat(isEditing ? 1 : 0))
+        navigationItem.rightBarButtonItem = isEditing ? UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(addMeme)) : nil
+    }
+}
 
+
+// MARK:- TableView Data Source
+extension MemeTableViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -89,9 +105,5 @@ class MemeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let selectedMeme = memes[start]
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(start)
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.insert(selectedMeme, atIndex: end)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        setSegue(segue, withMemes: memes, indexPath: indexPathToTransmit)
     }
 }
